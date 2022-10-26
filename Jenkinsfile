@@ -10,12 +10,7 @@ pipeline{
         }
         stage ('ec2'){
             steps{
-                sh """aws ec2 create-vpc --cidr-block 192.168.0.0/16 --region "us-west-2"
-                      
-                      
-                
-                
-                """
+                sh 'aws ec2 run-instances --image-id ami-0c09c7eb16d3e8e70 --count 1 --instance-type t2.micro --key-name tempkey --security-group-ids sg-0919be859cab53b7f'
             }
         }
 }
